@@ -1,0 +1,22 @@
+.nav-links a {
+  margin-inline: 1rem;
+}
+.nav-links a:hover {
+  color: blueviolet;
+  transition: 0.3s;
+}
+.mobile-nav-link a {
+  margin: 1rem 0;
+  display: inline-block;
+}
+.mobile-nav-link a::after {
+  display: block;
+  content: "";
+  width: 0;
+  height: 2px;
+  background-color: #ffff;
+  transition: width 0.3s;
+}
+.mobile-nav-link a:hover::after {
+  width: 40%;
+}

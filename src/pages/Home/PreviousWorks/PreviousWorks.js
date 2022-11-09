@@ -14,7 +14,7 @@ const PreviousWorks = () => {
             <h2 className=' font-[Libre] md:text-4xl sm:text-2xl text-xl text-[#121212] lg:w-[70%] md:w-[85%] lg:leading-normal md:leading-[1.4] leading-snug tracking-[0.01em] mx-auto lg:my-16 md:my-11 my-8 sm:text-center text-justify'>Alex-Photography is a service based website in Bangladesh, Dhaka. I am expert in shooting liquids and my colorful liquid work, titled “Biford”, has become very well known and collectable.</h2>
 
             <div>
-                <h3 className=' font-[poppins] font-medium md:text-5xl sm:text-4xl text-3xl text-[#66666b] text-center  opacity-70 mb-9'>Recent Works</h3>
+                <h3 className=' font-[poppins] font-medium md:text-5xl sm:text-4xl text-3xl text-[#1F2937] text-center mb-9'>Recent Clicks</h3>
                 <div className=' flex md:flex-row md:justify-between flex-col item-center recent-works-container'>
                     <div className=' flex flex-col justify-between'>
                         <img loading='lazy' src={img1} alt="" />

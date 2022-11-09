@@ -26,7 +26,7 @@ const Home = () => {
                                     <PhotoProvider>
                                         <PhotoView key={service._id} src={service.img}>
 
-                                            <img loading='lazy' src={service.img} alt="Shoes" />
+                                            <img className=' cursor-zoom-in' loading='lazy' src={service.img} alt="Shoes" />
                                         </PhotoView>
                                     </PhotoProvider>
                                 </figure>

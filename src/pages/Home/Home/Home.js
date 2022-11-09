@@ -1,7 +1,10 @@
 import React from 'react';
-import { useLoaderData } from 'react-router-dom';
+import { PhotoProvider, PhotoView } from 'react-photo-view';
+import { Link, useLoaderData } from 'react-router-dom';
 import PreviousWorks from '../PreviousWorks/PreviousWorks';
 import Slider from '../Slider/Slider';
+import 'react-photo-view/dist/react-photo-view.css';
+
 
 const Home = () => {
     const services = useLoaderData();
@@ -18,18 +21,29 @@ const Home = () => {
                     {
                         services.map(service =>
                             <div key={service._id} className="card card-compact w-[80%] md:w-96 bg-base-100 shadow-xl my-6 lg:mx-5 md:mx-3 mx-auto" >
-                                <figure><img loading='lazy' src={service.img} alt="Shoes" /></figure>
+                                <figure>
+                                    <PhotoProvider>
+                                        <PhotoView key={service._id} src={service.img}>
+
+                                            <img loading='lazy' src={service.img} alt="Shoes" />
+                                        </PhotoView>
+                                    </PhotoProvider>
+                                </figure>
                                 <div className="card-body">
-                                    <h2 className="card-title">Shoes!</h2>
-                                    <p>If a dog chews shoes whose shoes does he choose?</p>
+                                    <h2 className="card-title">{service.service_name}</h2>
+                                    <p className=' mb-3'>{service.service_description.slice(0, 100)}...</p>
                                     <div className="card-actions justify-end">
-                                        <button className="btn btn-primary">Buy Now</button>
+                                        <Link to=''><button className="btn btn-primary">veiw details</button></Link>
                                     </div>
                                 </div>
                             </div>
                         )
                     }
                 </div>
+                <div className=' flex items-center'>
+                    <Link to='' className=' mx-auto'><button className='btn btn-outline btn-primary'>see all services</button></Link>
+                </div>
+
 
             </div>
         </div>

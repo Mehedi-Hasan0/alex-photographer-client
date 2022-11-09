@@ -8,7 +8,7 @@ const Header = () => {
     const [toggles, setToggles] = useState(false);
 
     return (
-        <nav className=' flex justify-between py-4 mx-6 items-center'>
+        <nav className=' flex justify-between py-4 mx-6 items-center sticky top-0 z-10 mb-4 bg-white'>
             <Link to='/' className=' font-[libre] text-4xl text-black uppercase'>Al<span className=' text-gray-600'>ex</span></Link>
 
             <div className=' hidden md:block font-[poppins] text-xl text-black nav-links uppercase'>

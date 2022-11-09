@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import './SliderItem.css';
 
 const SliderItem = ({ slider }) => {
@@ -19,7 +20,7 @@ const SliderItem = ({ slider }) => {
                 <p className=' sm:block hidden text-base text-white mt-8'>I am a professional Photographer. Do you want sports, wild life, wedding e.t.c Photography services? Then Let's talk!!</p>
             </div>
             <div className="absolute flex justify-start transform -translate-y-1/2 w-2/5 left-24 top-[70%]">
-                <button className="btn btn-primary md:block hidden">Go to Services</button>
+                <Link to='/services'><button className="btn btn-primary md:block hidden">Go to Services</button></Link>
 
             </div>
             <div className=" absolute flex justify-end transform -translate-y-1/3 left-5 right-5 bottom-0">

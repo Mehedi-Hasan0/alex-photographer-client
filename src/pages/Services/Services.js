@@ -1,35 +1,29 @@
 import React, { useEffect } from 'react';
 import { PhotoProvider, PhotoView } from 'react-photo-view';
 import { Link, useLoaderData } from 'react-router-dom';
-import PreviousWorks from '../PreviousWorks/PreviousWorks';
-import Slider from '../Slider/Slider';
-import 'react-photo-view/dist/react-photo-view.css';
-import NewsLetter from '../NewsLetter/NewsLetter';
 
-
-const Home = () => {
+const Services = () => {
     const services = useLoaderData();
 
     useEffect(() => {
-        // scroll to top on page load
+        // 👇️ scroll to top on page load
         window.scrollTo({ top: 0, left: 0, behavior: 'smooth' });
     }, []);
     return (
         <div>
-            <Slider />
-            <PreviousWorks />
-            <div className=' services  lg:py-16 md:py-11 bg-[#F1F1F1] mt-9'>
-                <div className='py-4 md:py-9'>
-                    <h2 className=' font-[poppins] font-medium text-2xl md:text-3xl lg:text-4xl text-[#1F2937]  text-center'>Services</h2>
-                    <p className='font-[poppins] text-base md:text-lg lg:text-xl text-[#4242429f] mb-4 mx-8 text-center'>Choose the best services and see the beauty of photo :)</p>
+            <div className=' services  lg:py-10 md:py-5'>
+                <div className='py-4'>
+                    <h2 className=' font-[poppins] font-bold text-lg md:text-xl text-[#4506CB]  text-center'>Services</h2>
+                    <p className='font-[poppins] text-lg md:text-xl text-[#151515] mb-4 mx-8 text-center'>Choose the best services and see the beauty of photo.</p>
                 </div>
-                <div className=' mx-6 flex md:flex-row md:justify-between flex-col'>
+                <div className=' mx-auto grid md:grid-cols-2 xl:grid-cols-3 gap-5'>
                     {
                         services.map(service =>
-                            <div key={service._id} className="card card-compact w-[80%] md:w-96 bg-base-100 shadow-xl my-6 lg:mx-5 md:mx-3 mx-auto" >
+                            <div key={service._id} className="card card-compact w-[80%] md:w-96 bg-base-100 shadow-xl my-6 mx-auto" >
                                 <figure>
                                     <PhotoProvider>
                                         <PhotoView key={service._id} src={service.img}>
+
                                             <img className=' cursor-zoom-in' loading='lazy' src={service.img} alt="Shoes" />
                                         </PhotoView>
                                     </PhotoProvider>
@@ -45,14 +39,9 @@ const Home = () => {
                         )
                     }
                 </div>
-                <div className=' flex items-center'>
-                    <Link to='/services' className=' mx-auto mb-6'><button className='btn btn-outline btn-primary'>see all services</button></Link>
-                </div>
             </div>
-            {/* newsletter section */}
-            <NewsLetter />
         </div>
     );
 };
 
-export default Home;
+export default Services;

@@ -4,6 +4,7 @@ import { Link, useLoaderData } from 'react-router-dom';
 import PreviousWorks from '../PreviousWorks/PreviousWorks';
 import Slider from '../Slider/Slider';
 import 'react-photo-view/dist/react-photo-view.css';
+import NewsLetter from '../NewsLetter/NewsLetter';
 
 
 const Home = () => {
@@ -12,10 +13,10 @@ const Home = () => {
         <div>
             <Slider />
             <PreviousWorks />
-            <div className=' services  lg:py-16 md:py-11 bg-[#F1F1F1] my-9'>
+            <div className=' services  lg:py-16 md:py-11 bg-[#F1F1F1] mt-9'>
                 <div className='py-4 md:py-9'>
                     <h2 className=' font-[poppins] font-medium text-2xl md:text-3xl lg:text-4xl text-[#1F2937]  text-center'>Services</h2>
-                    <p className='font-[poppins] text-base md:text-lg lg:text-xl text-[#424242] mb-4 mx-8 text-center'>Choose the best services and see the beauty of photo :)</p>
+                    <p className='font-[poppins] text-base md:text-lg lg:text-xl text-[#4242429f] mb-4 mx-8 text-center'>Choose the best services and see the beauty of photo :)</p>
                 </div>
                 <div className=' mx-6 flex md:flex-row md:justify-between flex-col'>
                     {
@@ -41,11 +42,11 @@ const Home = () => {
                     }
                 </div>
                 <div className=' flex items-center'>
-                    <Link to='' className=' mx-auto'><button className='btn btn-outline btn-primary'>see all services</button></Link>
+                    <Link to='' className=' mx-auto mb-6'><button className='btn btn-outline btn-primary'>see all services</button></Link>
                 </div>
-
-
             </div>
+            {/* newsletter section */}
+            <NewsLetter />
         </div>
     );
 };

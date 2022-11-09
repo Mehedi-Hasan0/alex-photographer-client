@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import close from '../../../assets/close.svg';
-import menu from '../../../assets/menu.svg';
+import close from '../../../assets/icon/close.svg';
+import menu from '../../../assets/icon/menu.svg';
 import './Header.css';
 
 const Header = () => {
@@ -14,7 +14,7 @@ const Header = () => {
             <div className=' hidden md:block font-[poppins] text-xl text-black nav-links uppercase'>
                 <Link to='/'>Home</Link>
                 <Link to='/services'>Services</Link>
-                <button className=' btn btn-outline  font-[poppins] text-lg'><Link to='/signin'>Sign In</Link></button>
+                <button className=' btn btn-outline btn-primary font-normal font-[poppins] text-lg'><Link to='/signin'>Sign In</Link></button>
             </div>
 
             <div className='md:hidden flex flex-1 justify-end items-center'>
@@ -26,7 +26,6 @@ const Header = () => {
 
                         <Link to='/'>Home</Link>
                         <Link to='/services'>Services</Link>
-                        <Link to='/signin'>Sign In</Link>
                         <Link to='/signin'>Sign In</Link>
                     </div>
                 </div>

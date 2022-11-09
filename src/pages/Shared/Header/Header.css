@@ -1,10 +1,6 @@
 .nav-links a {
   margin-inline: 1rem;
 }
-.nav-links a:hover {
-  color: blueviolet;
-  transition: 0.3s;
-}
 .mobile-nav-link a {
   margin: 1rem 0;
   display: inline-block;

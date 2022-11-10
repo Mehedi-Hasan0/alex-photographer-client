@@ -74,10 +74,10 @@ const SignUp = () => {
 
                     </div>
                     <div className="form-control mt-6">
-                        <button className="btn btn-primary">Register</button>
+                        <button className="btn btn-primary">Sign Up</button>
                     </div>
                     <p>{error}</p>
-                    <p>Already have an account? <Link className='text-[#570DF8] font-medium text-base' to='/login'>Login</Link></p>
+                    <p>Already have an account? <Link className='text-[#570DF8] font-medium text-base' to='/signin'>Sign In</Link></p>
                 </form>
             </div>
         </div>

@@ -22,6 +22,7 @@ const Header = () => {
             <div className=' hidden md:block font-[poppins] md:text-lg text-base text-black nav-links uppercase'>
                 <Link to='/'>Home</Link>
                 <Link to='/services'>Services</Link>
+                <Link to='/blogs'>Blogs</Link>
                 {
                     user?.email ?
                         <>
@@ -43,6 +44,7 @@ const Header = () => {
 
                         <Link to='/'>Home</Link>
                         <Link to='/services'>Services</Link>
+                        <Link to='/blogs'>Blogs</Link>
                         {
 
                             user?.email ?

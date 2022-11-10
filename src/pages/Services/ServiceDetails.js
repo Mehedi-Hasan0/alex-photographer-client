@@ -1,18 +1,18 @@
 import React, { useContext, useEffect } from 'react';
-import { useLoaderData } from 'react-router-dom';
+import { useLoaderData, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../context/AuthProvider/AuthProvider';
 import ClientReviews from './ClientReviews';
 
 const ServiceDetails = () => {
     const { _id, service_name, img, service_description, price } = useLoaderData();
     const { user } = useContext(AuthContext);
+    const navigate = useNavigate();
 
     const handlePlaceOrder = event => {
         event.preventDefault();
         const form = event.target;
         const name = form.name.value;
         const email = user?.email || 'unregistered';
-        const PhotoUrl = form.imgurl.value;
         const message = form.message.value;
         const date = new Date();
 
@@ -22,7 +22,6 @@ const ServiceDetails = () => {
             price,
             customer: name,
             email,
-            PhotoUrl,
             message,
             date
         }
@@ -46,6 +45,15 @@ const ServiceDetails = () => {
             .catch(er => console.error(er));
     }
 
+    const handleReview = () => {
+        if (!user) {
+            window.alert('Please Sign In first');
+            navigate('/signin')
+        } else {
+            window.alert("Review Added :)");
+        }
+    }
+
 
     useEffect(() => {
         // scroll to top on page load
@@ -61,7 +69,8 @@ const ServiceDetails = () => {
             <div className=' md:my-24 my-14 md:mx-20 mx-6'>
                 <div>
                     <h2 className=' font-[poppins] font-medium text-black md:text-4xl text-2xl md:mb-9 mb-6'>Info About {service_name}!</h2>
-                    <p className=' font-[poppins] md:text-lg text-xs text-[#666666] md:leading-8'>{service_description}</p>
+                    <p className=' font-[poppins] md:text-lg text-xs text-[#666666] md:leading-8 mb-1'>{service_description}</p>
+                    <p className=' font-[poppins] md:text-lg text-xs text-[#666666] md:leading-8 mb-8'>Price: {price}</p>
                 </div>
                 {/* client reviews */}
                 <ClientReviews />
@@ -72,7 +81,7 @@ const ServiceDetails = () => {
                 <form onSubmit={handlePlaceOrder} className="w-full max-w-3xl mx-auto">
                     <div className="md:flex md:items-center mb-6">
                         <div className="md:w-1/5">
-                            <label className="block text-white font-bold md:text-right mb-1 md:mb-0 pr-4" htmlFor="inline-full-name">
+                            <label className="block text-white font-bold md:text-right mb-1 md:mb-0 pr-4" htmlFor="inline-full-name" required>
                                 Full Name
                             </label>
                         </div>
@@ -90,19 +99,10 @@ const ServiceDetails = () => {
                             <input name="message" className="textarea textarea-bordered h-24 w-full" placeholder="Your Message" required></input>
                         </div>
                     </div>
-                    <div className="md:flex md:items-center mb-6">
-                        <div className="md:w-1/5">
-                            <label className="block text-white font-bold md:text-right mb-1 md:mb-0 pr-4" htmlFor="inline-password">
-                                Photo Url
-                            </label>
-                        </div>
-                        <div className="md:w-2/3">
-                            <input className="bg-white appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500" id="inline-password" type="text" name='imgurl' placeholder='Add PhotoUrl' />
-                        </div>
-                    </div>
+
                     <div className="md:flex md:items-center">
                         <div className=" md:mx-auto">
-                            <input onClick={() => { window.scrollTo({ top: 0, left: 0, behavior: 'smooth' }) }} className='btn btn-primary' type="submit" value="Submit" />
+                            <input onClick={handleReview} className='btn btn-primary' type="submit" value="Submit" />
                         </div>
                     </div>
                 </form>

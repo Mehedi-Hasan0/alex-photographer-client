@@ -34,7 +34,7 @@ const ClientReviews = () => {
                                 <p className=' pb-1 font-[poppins] font-bold lg:text-base text-[14px] text-black'>Service: {rev.serviceName}</p>
                                 <p className=' pb-6 font-[poppins] text-xs text-[#666666]'>Price: {rev.price}</p>
                                 <div className=' flex flex-row items-center'>
-                                    <img className=' md:w-8 md:h-8 w-6 h-6 md:mr-4 mr-2' src={user?.email ? user.photoUrl : userPhoto} alt="" />
+                                    <img className=' md:w-8 md:h-8 w-6 h-6 md:mr-4 mr-2 rounded-full' src={user?.photoURL ? user.photoURL : userPhoto} alt="" />
                                     <p className=' font-[poppins] font-medium text-black md:text-2xl text-xl'>{rev.customer}</p>
                                 </div>
 

@@ -59,7 +59,7 @@ const SignIn = () => {
             })
     }
     return (
-        <div className='mt-10 md:mx-16 mx-10 font-poppins'>
+        <div className='mt-10 md:mx-16 mx-6 font-poppins'>
             <div className="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100 mx-auto my-8">
                 <h1 className=' md:text-4xl text-2xl text-stone-800 text-center font-medium mt-4'>Login Now!</h1>
                 <form onSubmit={handleSubmit} className="card-body">

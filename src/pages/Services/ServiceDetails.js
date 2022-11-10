@@ -53,7 +53,7 @@ const ServiceDetails = () => {
     }, []);
     return (
         <div>
-            <div className=' flex flex-row justify-center md:py-16 py-10 md::w-[60%] w-[80%] mx-auto items-center'>
+            <div className=' flex flex-row justify-center md:py-16 py-10 md:w-[60%] w-[90%] mx-auto items-center'>
                 <h4 className=' font-[poppins] uppercase text-black sm:text-lg text-sm mr-6 mt-1'>about</h4>
                 <h3 className=' font-[libre] font-medium text-black sm:text-5xl text-2xl py-5 pl-5 border-l '>{service_name}</h3>
             </div>

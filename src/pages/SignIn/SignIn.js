@@ -1,81 +1,100 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
-import img from '../../assets/login/login.svg';
+import google from '../../assets/icon/google.svg';
+import github from '../../assets/icon/github.svg';
+import { GithubAuthProvider, GoogleAuthProvider } from 'firebase/auth';
 import { AuthContext } from '../../context/AuthProvider/AuthProvider';
 
 const SignIn = () => {
-    const { signin } = useContext(AuthContext);
-    const location = useLocation();
+    const { signin, loginWithGoogle, loginWithGithub, setLoading } = useContext(AuthContext);
+    const [error, setError] = useState('');
     const navigate = useNavigate();
-
+    const location = useLocation();
     const from = location.state?.from?.pathname || '/';
 
-    const handleSignIn = event => {
+    const googleProvider = new GoogleAuthProvider();
+    const githubProvider = new GithubAuthProvider();
+
+    const handleSubmit = (event) => {
         event.preventDefault();
         const form = event.target;
         const email = form.email.value;
         const password = form.password.value;
 
+        console.log(email, password);
+
         signin(email, password)
             .then(result => {
                 const user = result.user;
-
-                const currentUser = {
-                    email: user.email
-                };
-
-                console.log(currentUser);
-
-                //     // get jwt token
-                //     fetch('http://localhost:5000/jwt', {
-                //         method: 'POST',
-                //         headers: {
-                //             'content-type': 'application/json'
-                //         },
-                //         body: JSON.stringify(currentUser)
-                //     })
-                //         .then(res => res.json())
-                //         .then(data => {
-                //             console.log(data);
-                //             // local storage is not the best place to store jwt token 
-                //             localStorage.setItem('genius-token', data.token)
-                //             navigate(from, { replace: true });
+                console.log('currentUser', user);
+                form.reset();
+                setError('');
+                navigate(from, { replace: true });
+            }).catch(error => {
+                console.error(error);
+                setError(error.message);
+            }).finally(() => {
+                setLoading(false);
             })
 
-            // })
-            .catch(error => console.log(error));
-    };
-
+    }
+    // sign in with google
+    const handleGoogleSignIn = () => {
+        loginWithGoogle(googleProvider)
+            .then(result => {
+                const user = result.user;
+                console.log(user);
+                navigate(from, { replace: true })
+            })
+            .catch(error => console.error(error))
+    }
+    const handleGithubSignIn = () => {
+        loginWithGithub(githubProvider)
+            .then(result => {
+                const user = result.user;
+                console.log(user);
+                navigate(from, { replace: true });
+            }).catch(error => {
+                console.error(error);
+            })
+    }
     return (
-        <div className="hero w-full my-20">
-            <div className="hero-content grid gap-20 md:grid-cols-2 flex-col lg:flex-row">
-                <div className="text-center lg:text-left">
-                    <img className='w-3/4' src={img} alt="" />
-                </div>
-                <div className="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100 py-20">
-                    <h1 className="text-5xl text-center font-bold">Sign In</h1>
-                    <form onSubmit={handleSignIn} className="card-body">
-                        <div className="form-control">
-                            <label className="label">
-                                <span className="label-text">Email</span>
-                            </label>
-                            <input type="text" name='email' placeholder="email" className="input input-bordered" />
+        <div className='mt-10 md:mx-16 mx-10 font-poppins'>
+            <div className="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100 mx-auto my-8">
+                <h1 className=' md:text-4xl text-2xl text-stone-800 text-center font-medium mt-4'>Login Now!</h1>
+                <form onSubmit={handleSubmit} className="card-body">
+                    <div className="form-control">
+                        <label className="label">
+                            <span className="label-text">Email</span>
+                        </label>
+                        <input type="text" name='email' placeholder="email" className="input input-bordered" />
+                    </div>
+                    <div className="form-control">
+                        <label className="label">
+                            <span className="label-text">Password</span>
+                        </label>
+                        <input type="password" name='password' placeholder="password" className="input input-bordered" />
+                        <p>{error.slice(22, -2)}</p>
+                    </div>
+                    <div className="form-control mt-6">
+                        <button className="btn btn-primary">Login</button>
+                    </div>
+
+                    <p>New to Coding Hero? <Link className='text-[#570DF8] font-medium text-base' to='/signup'>Sign Up</Link></p>
+                    <hr className=' bg-slate-400 h-[2px] my-1' />
+                    <p className=' text-center text-base'>---  Or Login With  ---</p>
+                    <hr className=' bg-slate-400 h-[2px] my-1' />
+                    <div onClick={handleGoogleSignIn} className=' flex sm:flex-row flex-col justify-around items-center'>
+                        <div className=' p-2 rounded-xl bg-slate-100 hover:bg-slate-200 shadow-lg flex flex-row items-center cursor-pointer my-3'>
+                            <img className=' md:w-[32px] w-[24px] rounded-full' src={google} alt="Google" />
+                            <p className=' font-poppins text-base mx-2'>Google</p>
                         </div>
-                        <div className="form-control">
-                            <label className="label">
-                                <span className="label-text">Password</span>
-                            </label>
-                            <input type="password" name='password' placeholder="password" className="input input-bordered" />
-                            <label className="label">
-                                <a href="/SignIn" className="label-text-alt link link-hover">Forgot password?</a>
-                            </label>
+                        <div onClick={handleGithubSignIn} className=' p-2 rounded-xl bg-slate-100 hover:bg-slate-200 shadow-lg flex flex-row items-center cursor-pointer'>
+                            <img className=' md:w-[32px] w-[24px] rounded-full' src={github} alt="Github" />
+                            <p className=' font-poppins text-base mx-2'>Github</p>
                         </div>
-                        <div className="form-control mt-6">
-                            <input className="btn btn-primary" type="submit" value="SignIn" />
-                        </div>
-                    </form>
-                    <p className='text-center'>New to Genius Car? <Link className='text-orange-600 font-bold' to="/signup">Sign Up</Link> </p>
-                </div>
+                    </div>
+                </form>
             </div>
         </div>
     );

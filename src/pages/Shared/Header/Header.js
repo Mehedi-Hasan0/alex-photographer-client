@@ -14,7 +14,7 @@ const Header = () => {
             <div className=' hidden md:block font-[poppins] text-xl text-black nav-links uppercase'>
                 <Link to='/'>Home</Link>
                 <Link to='/services'>Services</Link>
-                <button className=' btn btn-outline btn-primary font-normal font-[poppins] text-lg'><Link to='/signin'>Sign In</Link></button>
+                <Link to='/signIn'><button className=' btn btn-outline btn-primary font-normal font-[poppins] text-lg'>Sign In</button></Link>
             </div>
 
             <div className='md:hidden flex flex-1 justify-end items-center'>

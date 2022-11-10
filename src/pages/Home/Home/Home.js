@@ -36,9 +36,10 @@ const Home = () => {
                                 </figure>
                                 <div className="card-body">
                                     <h2 className="card-title">{service.service_name}</h2>
+                                    <p className=' mb-2'>Price: {service.price}</p>
                                     <p className=' mb-3'>{service.service_description.slice(0, 100)}...</p>
                                     <div className="card-actions justify-end">
-                                        <Link to=''><button className="btn btn-primary">veiw details</button></Link>
+                                        <Link to={`/serviceDetails/${service._id}`}><button className="btn btn-primary">veiw details</button></Link>
                                     </div>
                                 </div>
                             </div>

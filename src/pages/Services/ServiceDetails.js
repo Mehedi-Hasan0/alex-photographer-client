@@ -58,7 +58,7 @@ const ServiceDetails = () => {
                 <h3 className=' font-[libre] font-medium text-black sm:text-5xl text-2xl py-5 pl-5 border-l '>{service_name}</h3>
             </div>
             <img src={img} alt="" />
-            <div className=' md:my-24 my-14 md:mx-16 mx-9'>
+            <div className=' md:my-24 my-14 md:mx-20 mx-6'>
                 <div>
                     <h2 className=' font-[poppins] font-medium text-black md:text-4xl text-2xl md:mb-9 mb-6'>Info About {service_name}!</h2>
                     <p className=' font-[poppins] md:text-lg text-xs text-[#666666] md:leading-8'>{service_description}</p>

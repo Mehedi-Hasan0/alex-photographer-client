@@ -1,6 +1,7 @@
 import React, { useContext, useEffect } from 'react';
 import { useLoaderData } from 'react-router-dom';
 import { AuthContext } from '../../context/AuthProvider/AuthProvider';
+import ClientReviews from './ClientReviews';
 
 const ServiceDetails = () => {
     const { _id, service_name, img, service_description, price } = useLoaderData();
@@ -62,12 +63,8 @@ const ServiceDetails = () => {
                     <h2 className=' font-[poppins] font-medium text-black md:text-4xl text-2xl md:mb-9 mb-6'>Info About {service_name}!</h2>
                     <p className=' font-[poppins] md:text-lg text-xs text-[#666666] md:leading-8'>{service_description}</p>
                 </div>
-                <div className=' md:my-24 my-14'>
-                    <p className=' font-[libre] font-medium text-black md:text-5xl text-3xl text-center mb-16'>Client Reviews</p>
-                    <div className=' border-l-[3px] border-[#000000]'>
-                        <h2 className=' md:ml-44 ml-16'>d</h2>
-                    </div>
-                </div>
+                {/* client reviews */}
+                <ClientReviews />
             </div>
             {/* review section */}
             <div className=' my-20 p-14 bg-slate-800'>

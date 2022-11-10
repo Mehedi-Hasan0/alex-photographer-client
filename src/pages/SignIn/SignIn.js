@@ -53,7 +53,7 @@ const SignIn = () => {
                     <img className='w-3/4' src={img} alt="" />
                 </div>
                 <div className="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100 py-20">
-                    <h1 className="text-5xl text-center font-bold">SignIn</h1>
+                    <h1 className="text-5xl text-center font-bold">Sign In</h1>
                     <form onSubmit={handleSignIn} className="card-body">
                         <div className="form-control">
                             <label className="label">

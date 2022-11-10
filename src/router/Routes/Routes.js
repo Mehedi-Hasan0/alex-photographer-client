@@ -14,17 +14,17 @@ const router = createBrowserRouter([
             {
                 path: '/',
                 element: <Home />,
-                loader: () => fetch('http://localhost:5000/limitedServices')
+                loader: () => fetch('https://alex-photographer-server.vercel.app/limitedServices')
             },
             {
                 path: '/services',
                 element: <Services />,
-                loader: () => fetch('http://localhost:5000/allServices')
+                loader: () => fetch('https://alex-photographer-server.vercel.app/allServices')
             },
             {
                 path: '/serviceDetails/:id',
                 element: <ServiceDetails />,
-                loader: ({ params }) => fetch(`http://localhost:5000/serviceDetails/${params.id}`)
+                loader: ({ params }) => fetch(`https://alex-photographer-server.vercel.app/serviceDetails/${params.id}`)
             },
             {
                 path: '/signIn',

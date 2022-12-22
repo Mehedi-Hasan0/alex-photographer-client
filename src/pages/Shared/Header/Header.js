@@ -16,7 +16,7 @@ const Header = () => {
     }
 
     return (
-        <nav className=' flex justify-between py-4 px-6 items-center sticky top-0 z-10 mb-4 shadow-md bg-white'>
+        <nav className=' flex justify-between py-4 px-6 items-center sticky top-0 z-10 mb-4 shadow-md bg-white '>
             <Link to='/' className=' font-[libre] text-4xl text-black uppercase'>Al<span className=' text-gray-600'>ex</span></Link>
 
             <div className=' hidden md:block font-[poppins] md:text-lg text-base text-black nav-links uppercase'>
